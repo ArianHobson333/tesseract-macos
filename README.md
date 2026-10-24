@@ -1,6 +1,18 @@
 # Tesseract
-An Arc-style browser for macOS, built on [Helium](https://github.com/imputnet/helium)
-and Chromium. Work in progress.
+An Arc-style browser for macOS, built on [Helium](https://github.com/imputnet/helium),
+[ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium)
+and Chromium.
+
+**Status: pre-alpha.** Today it's Helium under a new name, with its own
+updates. Arc-style features (sidebar, Spaces, Archive, command bar) come next.
+See the [design spec](docs/specs/2026-10-24-tesseract-browser-design.md).
+
+- Licence: GPL-3.0, same as Helium. ungoogled-chromium parts stay under
+  their BSD licence (`LICENSE.ungoogled_chromium`).
+- Security: see [SECURITY.md](SECURITY.md).
+- Helium services: see [docs/trust/helium-services.md](docs/trust/helium-services.md).
+
+Thanks to the Helium and ungoogled-chromium teams, whose work this is built on.
 
 This repo is a fork of [helium-macos](https://github.com/imputnet/helium-macos)
 and keeps its structure so Helium updates merge cleanly. See
