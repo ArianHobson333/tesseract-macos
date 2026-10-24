@@ -20,9 +20,9 @@ jobs:
     name: Build macOS binaries of Helium
     strategy:
       matrix:
-        arch: [arm64, x86_64]
+        arch: [arm64]
       fail-fast: true
-      max-parallel: 2
+      max-parallel: 1
     uses: ./.github/workflows/building.yml
     secrets: inherit
     with:
@@ -34,11 +34,12 @@ jobs:
     name: Release macOS binaries of Helium
     runs-on: ${{ inputs.runner }}
     if: ${{ inputs.do-release }}
+    environment: release
     permissions:
       contents: write
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           submodules: true
           fetch-depth: 0
@@ -53,12 +54,8 @@ jobs:
       - name: Prepare release
         id: bake
         run: ./github_prepare_release.sh | tee -a github_actions_release.log
-      - name: Get built x86-64 binary
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ steps.bake.outputs.x64_file_name }}
       - name: Get built arm64 binary
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           name: ${{ steps.bake.outputs.arm64_file_name }}
       - name: Generate release note
@@ -72,14 +69,13 @@ jobs:
             echo EOF
           } >> "$GITHUB_OUTPUT"
       - name: Release Helium binaries
-        uses: imputnet/action-gh-release@v2.5
+        uses: imputnet/action-gh-release@f0aaee5ca0734029d3612cf234fbc25f261b5036 # v2.5
         with:
           body_path: ./github_release_note.md
           draft: false
           prerelease: true
           files: |
             ./release_asset/${{ steps.bake.outputs.arm64_file_name }}
-            ./release_asset/${{ steps.bake.outputs.x64_file_name }}
             ${{ steps.list_deltas.outputs.deltas }}
           name: ${{ steps.bake.outputs.release_name }}
           tag_name: ${{ steps.bake.outputs.release_tag_version }}

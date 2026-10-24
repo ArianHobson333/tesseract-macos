@@ -14,11 +14,11 @@ jobs:
       matrix:
         check: [sanity, substitution]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       with:
         submodules: true
         persist-credentials: false
-    - uses: actions/setup-python@v6
+    - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
       with:
         python-version: '3.14'
     - name: Prepare check environment
@@ -28,7 +28,7 @@ jobs:
         brew install coreutils quilt zstd --overwrite
         python3 -m pip install requests Pillow
     - name: Cache Chromium source
-      uses: actions/cache@v5
+      uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
       with:
         path: build/chromium-source.tar
         key: >-

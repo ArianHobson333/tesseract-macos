@@ -9,3 +9,6 @@ reason for the edit.
 | `.gitmodules` | `helium-chromium` points at `ArianHobson333/tesseract` | M1 Task 1 |
 | `README.md` | Tesseract header above the upstream text | M1 Task 1 |
 | `.gitignore` | Ignore local tool config, clean-room raw data, key files | M1 Task 1 |
+| `.github/workflows/*.yml`, `.github/actions/*/action.yml` | Third-party actions pinned to commit SHAs | M1 Task 2 |
+| `.github/workflows/build.yml` | arm64 only; release job needs the `release` environment | M1 Task 2 |
+| `.github/actions/do-build/action.yml` | Log disk usage after each build phase | M1 Task 2 |
