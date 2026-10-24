@@ -12,12 +12,12 @@ if [ -f "$_root_dir/build_finished_$_target_cpu.log" ]; then
   # For packaging
   _helium_version=$(python3 "$_main_repo/utils/helium_version.py" --tree "$_main_repo" --platform-tree "$_root_dir" --print)
 
-  _file_name="helium_${_helium_version}_${_target_cpu}-macos.dmg"
+  _file_name="tesseract_${_helium_version}_${_target_cpu}-macos.dmg"
   _hash_name="${_file_name}.hashes.md"
 
   cd "$_src_dir"
 
-  xattr -cs out/Default/Helium.app
+  xattr -cs out/Default/Tesseract.app
 
   # Unsigned builds (no certificate secret) skip the signing keychain
   if [ -n "${MACOS_CERTIFICATE:-}" ]; then
