@@ -1,0 +1,23 @@
+Processes: 612 total, 3 running, 609 sleeping, 3401 threads 
+2026/10/24 21:40:11
+Load Avg: 3.12, 3.40, 3.55 
+CPU usage: 7.85% user, 9.42% sys, 82.72% idle 
+PhysMem: 7487M used (3361M wired, 2535M compressor), 128M unused.
+
+PID    COMMAND          POWER
+422    WindowServer     0.0  
+71688  Tesseract        0.0  
+71701  Tesseract Helper 0.0  
+Processes: 612 total, 3 running, 609 sleeping, 3401 threads 
+2026/10/24 21:40:12
+Load Avg: 3.12, 3.40, 3.55 
+CPU usage: 7.85% user, 9.42% sys, 82.72% idle 
+PhysMem: 7487M used (3361M wired, 2535M compressor), 128M unused.
+VM: 317T vsize, 6144M framework vsize, 248366691(236) swapins, 258130113(428) swapouts.
+
+PID    COMMAND          POWER
+422    WindowServer     43.3 
+71688  Tesseract        5.1  
+71701  Tesseract Helper 3.0  
+71702  Tesseract Helper 2.5  
+93076  top              7.5  

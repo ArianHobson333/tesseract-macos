@@ -13,3 +13,5 @@ cleanroom-raw/
 *.p12
 *.pem
 .superpowers/
+
+__pycache__/
