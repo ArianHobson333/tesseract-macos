@@ -1,0 +1,56 @@
+name: Sync Helium releases
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-upstream
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      # Fine-grained token with contents, pull requests and issues write on
+      # tesseract and tesseract-macos. GITHUB_TOKEN can't push to the core
+      # repo, and PRs it opens don't run checks.
+      GH_TOKEN: ${{ secrets.TESSERACT_SYNC_TOKEN }}
+    steps:
+      - name: Check token
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::TESSERACT_SYNC_TOKEN secret is not set"
+            exit 1
+          fi
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          submodules: true
+          fetch-depth: 0
+          token: ${{ secrets.TESSERACT_SYNC_TOKEN }}
+      - name: Configure git
+        run: |
+          git config --global user.name "Tesseract sync"
+          git config --global user.email "sync@users.noreply.github.com"
+      - name: Merge newest Helium release
+        id: sync
+        run: ./.github/scripts/sync_upstream.sh
+      - name: Open sync PR
+        if: steps.sync.outputs.status == 'merged'
+        run: |
+          gh pr create --base main --head "sync/${{ steps.sync.outputs.tag }}" \
+            --title "sync: Helium ${{ steps.sync.outputs.tag }}" \
+            --body "Merges Helium ${{ steps.sync.outputs.tag }}. Core main already includes the merged Helium core. Merge once the checks pass, then run a release build."
+      - name: Open conflict issue
+        if: failure() && steps.sync.outputs.status == 'conflict'
+        run: |
+          title="Helium ${{ steps.sync.outputs.tag }} needs manual sync"
+          gh label create security --color B60205 --force
+          gh label create upstream --color 0E8A16 --force
+          if [ -z "$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[].number')" ]; then
+            gh issue create --title "$title" --label security --label upstream \
+              --body "The automatic merge failed. See ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} and docs/syncing-upstream.md."
+          fi

@@ -1,0 +1,19 @@
+Machine model: Mac14,2
+OS version: 25F71
+Boot arguments:
+Boot time: Fri Oct 24 08:00:00 2026
+
+
+
+*** Sampled system activity (Fri Oct 24 21:40:12 2026 +0200) (1003.12ms elapsed) ***
+
+
+*** Running tasks ***
+
+Name                               ID     CPU ms/s  User%  Deadlines (<2 ms, 2-5 ms)  Wakeups (Intr, Pkg idle)  GPU ms/s  Energy Impact
+WindowServer                       422    120.31    45.10  10.97   2.99               210.35  20.94             60.12     95.40
+Tesseract Helper (Renderer)        71701  40.12     90.01  0.00    0.00               50.12   3.99              0.00      21.75
+Tesseract Helper (Renderer)        71702  10.50     88.00  0.00    0.00               12.00   1.00              0.00      4.25
+Tesseract                          71688  20.00     70.00  1.00    0.00               30.00   2.00              5.00      12.00
+kernel_task                        0      80.00     0.00   0.00    0.00               500.00  100.00            0.00      40.00
+ALL_TASKS                          -2     500.00    50.00  20.00   5.00               1000.00 200.00            70.00     300.00

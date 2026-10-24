@@ -44,7 +44,7 @@ Sparkle 2 (EdDSA), Apple notarytool.
 - No telemetry and no new network endpoints, except our appcast host
   (`arianhobson333.github.io`) and Google Safe Browsing.
 - Repo text, commits and PRs: no AI/assistant attribution or mentions
-  (owner's global rule). No `Co-Authored-By` lines.
+  (owner's global rule). No co-author trailers.
 - Chromium checkout paths must contain no spaces (the SSD is now `/Volumes/AriSSD`).
 - Full Chromium builds happen in CI only. The owner's Mac (M2, 8 GB) runs
   builds, tests Python/shell tooling, and runs the perf harness.
