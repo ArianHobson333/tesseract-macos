@@ -28,6 +28,8 @@ jobs:
   build_job:
     name: Build Helium for macOS
     runs-on: ${{ inputs.os }}
+    # Signing and notarization secrets; the environment only allows main
+    environment: signing
     outputs:
       status: ${{ steps.build.outputs.status }}
     steps:

@@ -18,3 +18,6 @@ reason for the edit.
 | `sign_and_package_app.sh`, `.github/scripts/github_prepare_artifacts.sh`, `dev.sh` | `Tesseract.app`, DMG name/volume, DMG signing identifier, dev profile dir | M1 Task 3 |
 | `devutils/generate_sparkle_deltas.py` | Deltas diff `Tesseract.app` | M1 Task 3 |
 | `resources/dmg.json`, `devutils/generate_dmg_dsstore.sh` | DMG layout uses `Tesseract.app` (`resources/dmg_dsstore` still needs regenerating) | M1 Task 3 |
+| `.github/scripts/github_prepare_release.sh`, `github_generate_release_note.sh` | arm64 only, Tesseract names, `tesseract-<version>` tags | M1 Task 7 |
+| `.github/workflows/build.yml` | Release job: notarization gate, non-prerelease, Sparkle appcast publish | M1 Tasks 6–7 |
+| `.github/workflows/build-phase.yml` | Build phases use the `signing` environment | M1 Task 5 |
