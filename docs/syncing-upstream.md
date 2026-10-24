@@ -39,3 +39,26 @@ releases should reach a Tesseract build within 24 hours.
 5. Push to a `sync/<tag>` branch and open a PR; CI must build before merge.
 
 An automated job does the same every 6 hours (added in M1 Task 8).
+
+## Automatic sync
+
+`.github/workflows/sync-upstream.yml` runs `.github/scripts/sync_upstream.sh`
+every 6 hours (and on demand). It finds the newest numeric Helium release tag
+and then:
+
+- **up-to-date**: the tag is already merged; nothing happens.
+- **pending**: a `sync/<tag>` branch already exists; nothing happens until
+  that PR is merged or the branch is deleted.
+- **merged**: core `main` gets the merged Helium core, branch `sync/<tag>`
+  is pushed here and a PR `sync: Helium <tag>` is opened. Merge it when the
+  checks pass, then run a release build.
+- **conflict**: nothing is pushed, the job fails and an issue
+  `Helium <tag> needs manual sync` (labels `security`, `upstream`) is opened.
+  Merge by hand as above.
+
+The job needs a repo secret `TESSERACT_SYNC_TOKEN`: a fine-grained personal
+access token limited to `tesseract` and `tesseract-macos` with Contents,
+Pull requests and Issues set to read and write. Set it with
+`gh secret set TESSERACT_SYNC_TOKEN -R ArianHobson333/tesseract-macos`.
+
+Test the script locally with `.github/scripts/tests/test_sync_upstream.sh`.
