@@ -12,3 +12,4 @@ reason for the edit.
 | `.github/workflows/*.yml`, `.github/actions/*/action.yml` | Third-party actions pinned to commit SHAs | M1 Task 2 |
 | `.github/workflows/build.yml` | arm64 only; release job needs the `release` environment | M1 Task 2 |
 | `.github/actions/do-build/action.yml` | Log disk usage after each build phase | M1 Task 2 |
+| `.github/scripts/github_prepare_artifacts.sh` | Skip the signing keychain when no certificate secret is set (unsigned builds) | M1 Task 2 |
