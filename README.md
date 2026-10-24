@@ -1,3 +1,13 @@
+# Tesseract
+An Arc-style browser for macOS, built on [Helium](https://github.com/imputnet/helium)
+and Chromium. Work in progress.
+
+This repo is a fork of [helium-macos](https://github.com/imputnet/helium-macos)
+and keeps its structure so Helium updates merge cleanly. See
+[docs/syncing-upstream.md](docs/syncing-upstream.md). The upstream README follows.
+
+---
+
 # helium-macos
 macOS packaging & development tooling for the
 [Helium Browser](https://github.com/imputnet/helium).

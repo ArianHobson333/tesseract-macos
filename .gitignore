@@ -7,3 +7,9 @@ build/
 .pc
 
 resources/generated/
+
+.claude/
+cleanroom-raw/
+*.p12
+*.pem
+.superpowers/
