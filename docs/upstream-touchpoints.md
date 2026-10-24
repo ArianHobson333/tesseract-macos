@@ -11,7 +11,7 @@ reason for the edit.
 | `.gitignore` | Ignore local tool config, clean-room raw data, key files | M1 Task 1 |
 | `.github/workflows/*.yml`, `.github/actions/*/action.yml` | Third-party actions pinned to commit SHAs | M1 Task 2 |
 | `.github/workflows/build.yml` | arm64 only; release job needs the `release` environment | M1 Task 2 |
-| `.github/actions/do-build/action.yml` | Log disk usage after each build phase | M1 Task 2 |
+| `.github/actions/do-build/action.yml` | Log disk usage after each build phase; expose the Actions cache to sccache | M1 Task 2 |
 | `.github/scripts/github_prepare_artifacts.sh` | Skip the signing keychain when no certificate secret is set (unsigned builds) | M1 Task 2 |
 | `helium-chromium/patches/series`, `patches/series` | Append the `tesseract/` patch groups last | M1 Task 3 |
 | `devutils/shared.sh` | Run `tesseract_substitution.py` right after Helium's name substitution | M1 Task 3 |
