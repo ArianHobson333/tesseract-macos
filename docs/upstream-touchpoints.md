@@ -21,3 +21,4 @@ reason for the edit.
 | `.github/scripts/github_prepare_release.sh`, `github_generate_release_note.sh` | arm64 only, Tesseract names, `tesseract-<version>` tags | M1 Task 7 |
 | `.github/workflows/build.yml` | Release job: notarization gate, non-prerelease, Sparkle appcast publish | M1 Tasks 6–7 |
 | `.github/workflows/build-phase.yml` | Build phases use the `signing` environment | M1 Task 5 |
+| `resources/assets/{legacy.png,legacy_crop.png,app.icns,Assets.car}` | Tesseract app icon, built from `tesseract-icon-source.png` (Helium's `AppIcon.icon` is unused by the build and left as is) | M1 Task 3 |
